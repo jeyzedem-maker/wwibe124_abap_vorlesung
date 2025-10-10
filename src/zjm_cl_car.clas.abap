@@ -1,14 +1,60 @@
-class ZJM_CL_CAR definition
-  public
-  final
-  create public .
+CLASS zjm_cl_car DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
 
-public section.
-protected section.
-private section.
+  PUBLIC SECTION.
+
+    METHODS set_type IMPORTING iv_marke TYPE string
+                               iv_model TYPE string.
+
+    METHODS set_production_date IMPORTING iv_production_date TYPE d.
+
+    METHODS set_horsepower IMPORTING iv_horsepower TYPE i.
+
+    METHODS set_price IMPORTING iv_price TYPE i.
+
+    METHODS display_attributes RETURNING VALUE(attributes) TYPE string.
+
+
+
+
+
+
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+
+    DATA mv_marke TYPE string.
+    DATA mv_model TYPE string.
+    DATA mv_production_date TYPE d.
+    DATA mv_horsepower TYPE i.
+    DATA mv_price TYPE i.
+
 ENDCLASS.
 
 
 
-CLASS ZJM_CL_CAR IMPLEMENTATION.
+CLASS zjm_cl_car IMPLEMENTATION.
+
+  METHOD set_type.
+    mv_marke = iv_marke.
+    mv_model = iv_model.
+  ENDMETHOD.
+
+  METHOD set_production_date.
+    mv_production_date = iv_production_date.
+  ENDMETHOD.
+
+  METHOD set_horsepower.
+    mv_horsepower = iv_horsepower.
+  ENDMETHOD.
+
+  METHOD set_price.
+    mv_price = iv_price.
+  ENDMETHOD.
+
+  METHOD display_attributes.
+    attributes = |{ 'Make:' } { mv_marke } { 'Model:' } { mv_model } { 'Production Date:' } { mv_production_date } { 'Horsepower:' } { mv_horsepower } { 'Price' } { mv_price }|.
+  ENDMETHOD.
+
 ENDCLASS.
