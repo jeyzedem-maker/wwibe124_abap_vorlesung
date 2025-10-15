@@ -54,7 +54,7 @@ CLASS zjm_cl_car IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD display_attributes.
-    attributes = |{ 'Make:' } { mv_marke } { 'Model:' } { mv_model } { 'Production Date:' } { mv_production_date } { 'Horsepower:' } { mv_horsepower } { 'Price' } { mv_price }|.
+    attributes = |{ 'Marke:' } { mv_marke } { 'Model:' } { mv_model } { 'Production Date:' } { mv_production_date } { 'Horsepower:' } { mv_horsepower } { 'Price' } { mv_price }|.
   ENDMETHOD.
 
 ENDCLASS.

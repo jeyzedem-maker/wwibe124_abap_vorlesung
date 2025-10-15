@@ -179,6 +179,19 @@ CLASS zjm_cl_abap_basics_main IMPLEMENTATION.
     DATA lo_car2 LIKE lo_car1.
     CREATE OBJECT lo_car2.
 
+    lo_car1->set_type( iv_marke = 'BMW' iv_model = '330 1' ).
+    lo_car1->set_production_date( iv_production_date = '20190922' ).
+    lo_car1->set_horsepower( iv_horsepower = 252 ).
+    lo_car1->set_price( iv_price = 40000 ).
+
+    lo_car2->set_type( iv_marke = 'Mercedes-Benz' iv_model = 'C43 AMG' ).
+    lo_car2->set_production_date( iv_production_date = '20170504' ).
+    lo_car2->set_horsepower( iv_horsepower = 367 ).
+    lo_car2->set_price( iv_price = 43000 ).
+
+    out->write( lo_car1->display_attributes( ) ).
+    out->write( lo_car2->display_attributes( ) ).
+
 
 
   ENDMETHOD.
