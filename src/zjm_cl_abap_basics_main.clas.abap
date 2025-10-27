@@ -173,7 +173,7 @@ CLASS zjm_cl_abap_basics_main IMPLEMENTATION.
 
 *    out->write( lt_car ).
 
-    DATA lo_car1 TYPE REF TO zls_cl_car.
+    DATA lo_car1 TYPE REF TO zjm_cl_car.
     CREATE OBJECT lo_car1.
 
     DATA lo_car2 LIKE lo_car1.
@@ -192,6 +192,52 @@ CLASS zjm_cl_abap_basics_main IMPLEMENTATION.
     out->write( lo_car1->display_attributes( ) ).
     out->write( lo_car2->display_attributes( ) ).
 
+
+    DATA lt_cars TYPE TABLE OF REF TO zjm_cl_car.
+
+    APPEND lo_car1 TO lt_cars.
+    APPEND lo_car2 TO lt_cars.
+
+    LOOP AT lt_cars INTO DATA(ls_cars).
+      out->write( ls_cars->display_attributes( ) ).
+    ENDLOOP.
+
+    Data lo_car3 TYPE REF TO zjm_cl_car_c.
+
+    create OBJECT lo_car3
+        Exporting
+            iv_marke = 'Volkswagen'
+            iv_model = 'EOS'
+            iv_production_date = '20250910'
+            iv_horsepower = 150
+            iv_price = 8400.
+
+    out->write( lo_car3->display_attributes( ) ).
+
+    Data lo_car4 like lo_car3.
+
+    Data lo_car5 type ref to zjm_cl_car_c.
+
+    create OBJECT lo_car5
+        Exporting
+            iv_marke = 'Opel'
+            iv_model = 'Insignia'
+            iv_production_date = '20250910'
+            iv_horsepower = 330
+            iv_price = 8400.
+
+    Data lo_truck type ref to zjm_cl_truck_c.
+
+    create OBJECT lo_truck
+        Exporting
+            iv_marke = 'DAF'
+            iv_model = 'XF Euro6'
+            iv_production_date = '20171105'
+            iv_horsepower = 400
+            iv_price = 125000.
+
+   out->write( lo_car5->zjm_if_vihicle~play_sound( ) ).
+   out->write( lo_truck->zjm_if_vihicle~play_sound( ) ).
 
 
   ENDMETHOD.
